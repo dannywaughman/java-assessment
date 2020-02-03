@@ -14,13 +14,15 @@ public class OfflineExercises {
 
 	public String multChar(String input) {
 
-//		for (int i = input.charAt(0); i < input.charAt((input.length())); i++) {
+		String k = "";
+		for (char i : input.toCharArray()) {
+			for (int j = 0; j < 3; j++) {
+				k += i;
+			}
 
-//		for ( char i : input.toCharArray()) {
-//
-//			return i' + 'i' + 'i';
-		
-		return "";
+		}
+
+		return k;
 
 	}
 
@@ -37,7 +39,25 @@ public class OfflineExercises {
 
 	public String getBert(String input) {
 
-		return "";
+		String x = "";
+
+		if (input.toLowerCase().contains("bert")) {
+
+			if (input.toLowerCase().substring(input.toLowerCase().indexOf("bert") + 4).contains("bert")) {
+
+				String y = input.toLowerCase().substring(input.toLowerCase().indexOf("bert") + 4,
+						input.toLowerCase().lastIndexOf("bert"));
+
+				for (int i = y.length() - 1; i >= 0; i--) {
+
+					x += y.toCharArray()[i];
+
+				}
+
+			}
+		}
+
+		return x;
 	}
 
 	// Given three ints, a b c, one of them is small, one is medium and one is
@@ -87,8 +107,7 @@ public class OfflineExercises {
 
 		if (input.length() > 2) {
 
-			return input.substring((input.length() - 3), input.length()).equals("dev")
-					|| input.substring((input.length() - 3), input.length()).equals("Dev");
+			return input.toLowerCase().substring((input.length() - 3), input.length()).equals("dev");
 
 		} else {
 
@@ -104,7 +123,7 @@ public class OfflineExercises {
 	// superBlock("") → 0
 
 	public int superBlock(String input) {
-		
+
 //		for ()
 
 		return -1;
@@ -122,7 +141,18 @@ public class OfflineExercises {
 
 	public int amISearch(String arg1) {
 
-		return 0;
+		int count = 0;
+
+		String[] string = arg1.toLowerCase().split(" ");
+
+		for (String word : string) {
+
+			if (word.contentEquals("am")) {
+				count += 1;
+			}
+		}
+
+		return count;
 
 	}
 
@@ -171,7 +201,31 @@ public class OfflineExercises {
 
 	public int largest(String arg1) {
 
-		return 0;
+		int temp = 0;
+		int max = 0;
+
+		for (int i = 0; i < arg1.length(); i++) {
+			System.out.println(temp);
+			System.out.println(i);
+
+			if (arg1.toCharArray()[i] == ' ') {
+
+				if (temp > max) {
+
+					max = temp;
+				}
+				temp = 0;
+			} else {
+
+				temp += Integer.parseInt(arg1.substring(i, i + 1));
+			}
+
+		}
+		if (temp > max) {
+			max = temp;
+		}
+
+		return max;
 
 	}
 
